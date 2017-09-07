@@ -15,6 +15,7 @@ public class StorageOfSmallPictures {
     private double[] heightOfSmallPicture;
     private double finalWidthOfSmallPicture;
     private double finalHeightOfSmallPicture;
+    List<BufferedImage> images;
 
     public StorageOfSmallPictures(){
 
@@ -29,7 +30,7 @@ public class StorageOfSmallPictures {
             }
         }
     } */
-    List<BufferedImage> images;
+
     ArrayList<BufferedImage> readPictureFromDirectoryToList() throws IOException {
         images = new ArrayList<BufferedImage>();
         File dir = new File("D:\\zrodlo\\");
@@ -42,6 +43,9 @@ public class StorageOfSmallPictures {
         return (ArrayList<BufferedImage>) (ArrayList<BufferedImage>) images;
     }
 
+    void Scaling(){
+
+    }
     public void setNumberOfLoadedPictures(){numberOfLoadedPictures = images.size();}
     public int getNumberOfLoadedPictures(){return this.numberOfLoadedPictures;}
 }

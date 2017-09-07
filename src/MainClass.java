@@ -17,6 +17,16 @@ public class MainClass {
 
         System.out.println(small.getNumberOfLoadedPictures());
 
-        
+        FinalImage f = new FinalImage();
+        BufferedImage tmp2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB);
+        tmp2 = f.CreateFinalWorkingArea();
+        System.out.println(tmp2.getWidth() + " " + tmp2.getHeight());
+
+        System.out.println(f.cellsHorizontally + " " + f.cellsVertically);
+        f.checkNumberOfSocketsInRowsAndColumns(small.getNumberOfLoadedPictures(), small);
+        System.out.println(f.cellsHorizontally + " " + f.cellsVertically);
+
+
+
     }
 }

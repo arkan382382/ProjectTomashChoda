@@ -15,21 +15,21 @@ public class MainClass {
         List<BufferedImage> tmp = new ArrayList<BufferedImage>();
 
         tmp = small.readPictureFromDirectoryToList();
-        System.out.println(tmp.size());
 
-        System.out.println(small.getNumberOfLoadedPictures());
+        FinalImage f = new FinalImage();
+        BufferedImage tmp2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB);
+        tmp2 = f.createFinalWorkingArea();
 
-            FinalImage f = new FinalImage();
-            BufferedImage tmp2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB);
-            tmp2 = f.createFinalWorkingArea();
         System.out.println(tmp2.getWidth() + " " + tmp2.getHeight());
 
-        System.out.println(f.cellsHorizontally + " " + f.cellsVertically);
-        f.checkNumberOfSocketsInRowsAndColumns(small.getNumberOfLoadedPictures(), small);
-        System.out.println(f.cellsHorizontally + " " + f.cellsVertically);
-            Shower show = new Shower();
-            show.savePicture();
+        f.checkNumberOfSocketsInRowsAndColumns(small.getNumberOfLoadedPictures());
+        Shower show = new Shower();
+        show.savePicture(0,0, small, f);
 
+
+
+
+/*
             // test zapisu
         BufferedImage[] socket = new BufferedImage[small.getNumberOfLoadedPictures()];
         int positionX = 0;
@@ -46,15 +46,11 @@ public class MainClass {
             //change positionX and positionY with values after scaling
             positionX = positionX + small.images.get(i).getWidth();
             licznik = f.cellsHorizontally;
-            if((i % licznik) == 0 && i != 0){             //(i%(f.cellsHorizontally-1))==0)   (i==(f.cellsHorizontally-1))
+            if(((i+1) % (licznik)) == 0 && i != 0) {             //(i%(f.cellsHorizontally-1))==0)   (i==(f.cellsHorizontally-1))
                 positionX = 0;
                 positionY = positionY + small.images.get(i).getHeight();
             }
-           // positionY = positionY + small.images.get(i).getHeight();
-           // if(i==(f.cellsVertically-1)){
-           //     positionY = 0;
-           // }
         }
-        ImageIO.write(result, "jpg", new File("D:\\zrodlo\\result.jpg"));
+        ImageIO.write(result, "jpg", new File("D:\\zrodlo\\result.jpg")); */
     }
 }

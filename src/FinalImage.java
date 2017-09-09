@@ -14,13 +14,12 @@ public class FinalImage {
     int cellsHorizontally = 0;
     int cellsVertically = 0;
 
-    BufferedImage CreateFinalWorkingArea(){
+    BufferedImage createFinalWorkingArea(){
         result = new BufferedImage(widthOfFinalPicture, heightOfFinalPicture, BufferedImage.TYPE_INT_RGB);
         return result;
     }
 
-    void checkNumberOfSocketsInRowsAndColumns(int numberOfSmallPhotos, StorageOfSmallPictures small){
-      //  numberOfSmallPhotos = small.getNumberOfLoadedPictures();
+    void checkNumberOfSocketsInRowsAndColumns(int numberOfSmallPhotos){
         do{
             cellsVertically++;
             {
@@ -30,5 +29,11 @@ public class FinalImage {
             }
         } while ((cellsHorizontally * cellsVertically) < numberOfSmallPhotos);
     }
-    
+
+    public int getWidthOfFinalPicture(){
+        return this.widthOfFinalPicture;
+    }
+    public int getHeightOfFinalPicture(){
+        return this.heightOfFinalPicture;
+    }
 }

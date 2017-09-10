@@ -8,10 +8,16 @@ import java.io.IOException;
  * Created by arkan on 07.09.2017.
  */
 public class Shower {
+    public Shower(){
+
+    }
+    public Shower(int positionX, int positionY, StorageOfSmallPictures small, FinalImage finalImage) throws IOException {
+        savePicture(positionX, positionY, small, finalImage);
+    }
     void savePicture(int positionX, int positionY, StorageOfSmallPictures small, FinalImage finalImage) throws IOException {
         BufferedImage[] socket;
-        positionX = 0;
-        positionY = 0;
+       // positionX = 0;
+       // positionY = 0;
         int newW, newH;
         socket = new BufferedImage[small.getNumberOfLoadedPictures()];
         for(int i=0; i<small.getNumberOfLoadedPictures(); i++){
@@ -20,7 +26,7 @@ public class Shower {
             newW = ((finalImage.getWidthOfFinalPicture() / finalImage.cellsVertically) / socket[i].getWidth()) * socket[i].getWidth();
             //newH = ((finalImage.getHeightOfFinalPicture() / finalImage.cellsHorizontally) / socket[i].getHeight()) * socket[i].getHeight();
             newH = (newW/socket[i].getWidth()) * socket[i].getHeight();
-            socket[i] = small.resize(socket[i], newW/3, newH/3); //socket[i].getWidth(), socket[i].getHeight());
+            socket[i] = small.resize(socket[i], newW/3, newH/3); //socket[i].getWidth(), socket[i].getHeight()); /3
         }
         BufferedImage result = finalImage.createFinalWorkingArea();
         Graphics g = result.getGraphics();

@@ -18,14 +18,24 @@ public class Shower {
         BufferedImage[] socket;
        // positionX = 0;
        // positionY = 0;
-        int newW, newH;
+        int newW = 0;
+        int newH = 0;
         socket = new BufferedImage[small.getNumberOfLoadedPictures()];
         for(int i=0; i<small.getNumberOfLoadedPictures(); i++){
             socket[i] = small.images.get(i);
             //socket[i] = small.resize(socket[i], 10, 10); -> w miejsce 10, 10 wstawić przeskalowane wartości wys/szer
-            newW = ((finalImage.getWidthOfFinalPicture() / finalImage.cellsVertically) / socket[i].getWidth()) * socket[i].getWidth();
+            //newW = (((int)finalImage.getWidthOfFinalPicture() /(int)finalImage.cellsVertically) / (int)socket[i].getWidth()) * (int)socket[i].getWidth();               //working
+           newW = (finalImage.getWidthOfFinalPicture() / finalImage.cellsVertically);
+           float newWtemporary = (float) newW / (float) socket[i].getWidth();
+           float newWtemporary3 = socket[i].getWidth();
+           float newWtemporary2 = newWtemporary * socket[i].getWidth();
+           newW = (int) newWtemporary2;
             //newH = ((finalImage.getHeightOfFinalPicture() / finalImage.cellsHorizontally) / socket[i].getHeight()) * socket[i].getHeight();
-            newH = (newW/socket[i].getWidth()) * socket[i].getHeight();
+           // newH = (newW/(int)socket[i].getWidth()) * (int)socket[i].getHeight();                                                                                       //working
+            newH = (finalImage.getWidthOfFinalPicture() / finalImage.cellsVertically);
+            float temporaryForNewH_1 = (float) newW / (float) socket[i].getWidth();
+            float temporaryForNewH_2 = temporaryForNewH_1 * (float) socket[i].getHeight();
+            newH = (int)temporaryForNewH_2;
             socket[i] = small.resize(socket[i], newW/3, newH/3); //socket[i].getWidth(), socket[i].getHeight()); /3
         }
         BufferedImage result = finalImage.createFinalWorkingArea();
@@ -44,6 +54,6 @@ public class Shower {
                 positionY = positionY + socket[i].getHeight();
             }
         }
-        ImageIO.write(result, "jpg", new File("D:\\zrodlo\\result.jpg"));
+        ImageIO.write(result, "jpg", new File("G:\\zrodlo\\result.jpg"));
     }
 }

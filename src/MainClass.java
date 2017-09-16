@@ -13,44 +13,13 @@ public class MainClass {
     public static void main(String[] argc) throws IOException {
         StorageOfSmallPictures small = new StorageOfSmallPictures();
         List<BufferedImage> tmp = new ArrayList<BufferedImage>();
-
         tmp = small.readPictureFromDirectoryToList();
-
         FinalImage f = new FinalImage();
         BufferedImage tmp2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB);
         tmp2 = f.createFinalWorkingArea();
-
-        System.out.println(tmp2.getWidth() + " " + tmp2.getHeight());
-
         f.checkNumberOfSocketsInRowsAndColumns(small.getNumberOfLoadedPictures());
         Shower show = new Shower();
+
         show.savePicture(0,0, small, f);
-
-
-
-
-/*
-            // test zapisu
-        BufferedImage[] socket = new BufferedImage[small.getNumberOfLoadedPictures()];
-        int positionX = 0;
-        int positionY = 0;
-
-        for(int i=0; i<small.getNumberOfLoadedPictures(); i++){
-            socket[i] = small.images.get(i);
-        }
-        BufferedImage result = f.createFinalWorkingArea();
-        Graphics g = result.getGraphics();
-        int licznik = 0;
-        for(int i=0; i<small.getNumberOfLoadedPictures(); i++){
-            g.drawImage(socket[i], positionX, positionY, null);
-            //change positionX and positionY with values after scaling
-            positionX = positionX + small.images.get(i).getWidth();
-            licznik = f.cellsHorizontally;
-            if(((i+1) % (licznik)) == 0 && i != 0) {             //(i%(f.cellsHorizontally-1))==0)   (i==(f.cellsHorizontally-1))
-                positionX = 0;
-                positionY = positionY + small.images.get(i).getHeight();
-            }
-        }
-        ImageIO.write(result, "jpg", new File("D:\\zrodlo\\result.jpg")); */
     }
 }

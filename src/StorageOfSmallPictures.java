@@ -26,7 +26,7 @@ public class StorageOfSmallPictures {
 
     ArrayList<BufferedImage> readPictureFromDirectoryToList() throws IOException {
         images = new ArrayList<BufferedImage>();
-        File dir = new File("D:\\zrodlo\\");
+        File dir = new File("G:\\zrodlo\\");
         for(File file : dir.listFiles()){
             if((file.getName().toLowerCase().endsWith(".jpg")) && !file.getName().endsWith("result.jpg")){
                 images.add(ImageIO.read(file));

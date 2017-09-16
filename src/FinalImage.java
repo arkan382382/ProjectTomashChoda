@@ -1,9 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-/**
- * Created by arkan on 07.09.2017.
- */
 public class FinalImage {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private double widthOfScreenOnPC = screenSize.getWidth();
